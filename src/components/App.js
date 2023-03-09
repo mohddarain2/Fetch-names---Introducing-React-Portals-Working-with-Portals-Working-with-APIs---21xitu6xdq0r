@@ -22,7 +22,15 @@ function App() {
   /**
    * fetch data from api on mount. 
    */
-
+  const getData=async()=>{
+    const res = await fetch("https://jsonplaceholder.typicode.com/users")
+    const result =await res.json()
+    setData(result)
+  }
+  useEffect(()=>{
+    getData()
+    //console.log(data)
+  },[])
   return (
   <div className='App'>
     { data.map((_data, i) => <p key={_data.id}>{i}.&nbsp;{_data.name}</p>) }
